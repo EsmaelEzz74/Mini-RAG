@@ -17,3 +17,12 @@ $ conda create -n mini-rag-app python=3.8
 ```bash
 $ conda activate mini-rag-app
 ```
+4) Installation
+```bash
+$ pip install -r requirements.txt
+```
+### Setup the environment variables
+```bash
+$ cp .env.example .env
+```
+
