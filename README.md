@@ -25,4 +25,10 @@ $ pip install -r requirements.txt
 ```bash
 $ cp .env.example .env
 ```
+## Run the FastAPI Server
+```bash
+$ uvicorn main:app --reload --hosat 0.0.0.0
+```
+## Postman Collection
+Download the postman collection from [/Assets/mini-rag-app.postman_collection.json]
 
