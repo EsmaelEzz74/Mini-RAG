@@ -31,7 +31,7 @@ async def upload_data(project_id: str, file: UploadFile, app_settings: Settings 
                 }
         )
     
-    project_dir_path = ProjectController().get_projecy_path(project_id=project_id)
+    project_dir_path = ProjectController().get_project_path(project_id=project_id)
     file_path, file_id = data_controller.generate_unique_filepath(orig_file_name=file.filename, project_id=project_id)
 
     try :
@@ -59,7 +59,7 @@ async def process_endpoint(project_id: str, process_request: ProcessRequest):
 
     file_id = process_request.file_id
     chunk_size = process_request.chunk_size
-    chunk_overlap = process_request.chunk_overlap
+    chunk_overlap = process_request.overlap_size
     
     process_controller = ProcessController(project_id=project_id)
 
@@ -69,7 +69,7 @@ async def process_endpoint(project_id: str, process_request: ProcessRequest):
         file_content=file_content,
         file_id=file_id,
         chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap
+        overlap_size=chunk_overlap
     )
 
     if file_chunks is None or len(file_chunks) == 0:
@@ -79,4 +79,5 @@ async def process_endpoint(project_id: str, process_request: ProcessRequest):
                 "Signal": ResponseSignal.FILE_PROCESSING_FAILED.value
             }
         )
+    return file_chunks
 
