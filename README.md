@@ -63,5 +63,5 @@ $ sudo docker system prune --all
 ```
 ## Compose Docker up
 ```bash
-$ sudo docker compose up
+$ sudo docker compose up -d
 ```
